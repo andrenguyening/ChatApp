@@ -1,4 +1,4 @@
-# ChatApp README
+# ChatApp
 
 ChatApp is a simple chat application built with Flask, a lightweight web framework for Python. This README provides instructions on how to set up and run ChatApp on your local machine.
 
