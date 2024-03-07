@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="/static/main.js"></script>
+		<title>chat room</title>
+		<a style="float:right"><a href="{{ url_for('logout')}}">Logout</a>
+		<a id = "lobby" style="float:right" href = "{{ url_for('lobby')}}">Leave</a>
+		<h1>Chatroom</h1>
+	</head>
+<body>
+		<table class="chatbox" id = "chatbox">
+			{% for message in messages %}
+			<tr><td>{{ message.author_id + ": "+ message.text }}</td></tr>
+			{% endfor %}
+		</table>
+		<div class="input">
+			<form name="theForm">
+				<input type="text" id="message_text" name = "message" placeholder="Type your message...">
+				<input type = "button" id = "sendButton" value="Send">
+			</form>
+		</div>
+</body>

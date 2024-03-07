@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Lobby{% endblock %}
+{% block head %} 
+{{ super() }}
+<link rel="stylesheet" href="static/styles/styles.css">
+<h1>Chat Room Lobby</h1>
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for m in messages %}
+            <div>{{ m }}</div> 
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<h2>Rooms</h2>
+<form action="" method="post">
+    <button name="createchatroom" value="Create a chatroom">Create a chatroom</button>
+</form>
+<br>
+
+{% if chats: %}
+    {% for c in chats %}
+    {% if c.author_id == username %}
+        <a href = "{{ url_for('chat', chat_id=c.chat_id) }}">{{ c.chat_name }}</a> <a href = "{{ url_for('delete', chat_id=c.chat_id)}}">Delete Chat</a><br>
+    {% else %}
+        <a href = "{{ url_for('chat', chat_id=c.chat_id) }}">{{ c.chat_name }}</a><br>
+    {% endif %}
+    {% endfor %}
+{% else %}
+    There are currently no rooms.
+{% endif %}
+{% endblock %}
